@@ -1,7 +1,7 @@
 import React from "react";
 import HotSwapLogo from '../images/hotswap.png';
 
-import "../style.css";
+
 
 export default function Navbar() {
     return (
