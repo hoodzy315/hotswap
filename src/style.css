@@ -26,6 +26,10 @@ body {
   margin-top: 60px;
 }
 
+.loginform {
+    margin-left: 2em;
+}
+
 nav {
   display: flex;
   align-items: center;
@@ -41,6 +45,9 @@ nav {
   font-weight: 900;
 }
 
+#signUp{
+  margin-top:20px;
+}
 .nav--contact {
   margin-left: 10px;
   margin-bottom: auto;
@@ -54,40 +61,40 @@ nav {
 }
 
 .modal-cover {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    transform: translateZ(0);
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  transform: translateZ(0);
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2.5em 1.5em 1.5em 1.5em;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media screen and (min-width: 500px) {
+  /* Center the Modal! */
   .modal-area {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 2.5em 1.5em 1.5em 1.5em;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    left: 50%;
+    top: 50%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    max-width: 30em;
+    max-height: calc(100% - 1em);
   }
-  
-  @media screen and (min-width: 500px) {
-    /* Center the Modal! */
-    .modal-area {
-      left: 50%;
-      top: 50%;
-      height: auto;
-      transform: translate(-50%, -50%);
-      max-width: 30em;
-      max-height: calc(100% - 1em);
-    }
-  }
+}
 
 ._modal-close {
   position: absolute;
@@ -128,4 +135,10 @@ nav {
 .scroll-lock {
   overflow: hidden;
   margin-right: 17px;
+}
+
+.login--landing {
+  margin-left: 2em;
+  font-size: medium;
+  margin-top: 2em;
 }
