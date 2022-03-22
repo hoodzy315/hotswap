@@ -6,7 +6,7 @@ import LoginForm from "./LoginForm";
 const LoginModal = (props) => {
     return (
         <>
-            <Modal show={props.modalOpen} onHide={props.handleModalOpen}>
+            <Modal className="loginModal" show={props.modalOpen} onHide={props.handleModalOpen}>
                 <Modal.Header closeButton>
                     <Modal.Title>Login</Modal.Title>
                 </Modal.Header>

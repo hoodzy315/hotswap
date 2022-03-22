@@ -22,13 +22,16 @@ body {
 }
 
 .HotSwapLogo {
-  height: 150px;
-  margin-top: 60px;
+  max-width: 100%;
+  max-height:100%;
+  
 }
 
 .loginform {
     margin-left: 2em;
 }
+
+
 
 nav {
   display: flex;
@@ -45,10 +48,25 @@ nav {
   font-weight: 900;
 }
 
+
+.HotSwapContainer {
+  margin-top: 3em;
+  width: 270px;
+  height: 180px;
+}
+
 #signUp{
   margin-top:20px;
+  background-color: rgb(25, 160, 25);
 }
 .nav--contact {
+  margin-left: 10px;
+  margin-bottom: auto;
+  margin-top: auto;
+  font-weight: 900;
+}
+
+.nav--LogOut {
   margin-left: 10px;
   margin-bottom: auto;
   margin-top: auto;
@@ -78,10 +96,11 @@ nav {
   width: 100%;
   height: 100%;
   padding: 2.5em 1.5em 1.5em 1.5em;
-  background-color: #ffffff;
+  background-color: #6b30b8;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  border-radius: 25px;
 }
 
 @media screen and (min-width: 500px) {
@@ -141,4 +160,81 @@ nav {
   margin-left: 2em;
   font-size: medium;
   margin-top: 2em;
+}
+
+.form-control-sm{
+  width: 8.75em;
+}
+
+
+.flex-container {
+  display: flex;
+}
+
+.flex-child1, .flex-child2 {
+  margin-right: 1em;
+}
+.btnFormat {
+  background-color: #6b30b8;
+  margin-bottom: .2em;
+}
+
+.btnFormat2 {
+  background-color: rgb(25, 160, 25);
+  margin-bottom: .2em;
+}
+
+.formFormat {
+  background-color: #6b30b8;
+  color: white;
+}
+
+.signupfrmbtn {
+  background-color: rgb(25, 160, 25);
+}
+
+a {
+  cursor: pointer;
+}
+
+.loginModal .modal-content{
+  background-color:#6b30b8;
+  color: white;
+}
+
+.loginModal .modal-footer {
+  border-top: 0px;
+}
+
+.loginModal .modal-header {
+  border-bottom: 0px;
+}
+
+.wrapper{
+    margin-top: 2em;
+		margin-bottom: 10%;
+		margin-left: 2em;
+		margin-right: auto;
+		width: 95%;
+    height: 100%;
+		border: 1px solid #000033;
+		box-shadow: 9px 9px 9px #AA7539;
+		display: grid;
+		grid-template-rows: auto;
+		grid-template-columns: 12.25em 1fr 1fr;
+}
+
+.nav--dashboard{
+  margin-top: .8em;
+
+}
+
+.nav--welcome {
+}
+
+.buttonColumn {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1em;
 }

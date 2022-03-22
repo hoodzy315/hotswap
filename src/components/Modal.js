@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Form from './Form';
+import SignUpForm from './SignUpForm';
 import FocusTrap from "focus-trap-react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -38,7 +38,7 @@ export const Modal = ({
                         </svg>
                     </button>
                     <div className="modal-body">
-                        <Form onSubmit={onSubmit} />
+                        <SignUpForm onSubmit={onSubmit} />
                     </div>
                 </div>
             </aside>
