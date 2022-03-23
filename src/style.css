@@ -181,7 +181,17 @@ nav {
 
 .btnFormat2 {
   background-color: rgb(25, 160, 25);
-  margin: .25em;
+  margin: .5em;
+  width: 75%;
+}
+
+.btnFormat3 {
+  background-color: rgb(25, 160, 25);
+  margin: .5em;
+  width: 10%;
+  position:absolute;
+  top:0;
+  right:0;
 }
 
 .formFormat {
@@ -210,6 +220,10 @@ a {
   border-bottom: 0px;
 }
 
+.addItem {
+  margin: 1em;
+  position: relative;
+}
 .wrapper{
     margin-top: 2em;
 		margin-bottom: 10%;
@@ -217,11 +231,15 @@ a {
 		margin-right: auto;
 		width: 95%;
     height: 100%;
-		border: 1px solid #000033;
+		border: 2px solid #000033;
 		box-shadow: 9px 9px 9px rgb(24, 86, 167);;
 		display: grid;
 		grid-template-rows: auto;
-		grid-template-columns: 12.25em 1fr 1fr;
+		grid-template-columns: 12.25em 1fr;
+    grid-template-areas:
+    "a b";
+    border-radius: 25px;
+    
 }
 
 .nav--dashboard{
@@ -234,7 +252,8 @@ a {
 .buttonColumn {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
-  
+  border-radius: 22px;
   background-color:#6b30b8;
 }

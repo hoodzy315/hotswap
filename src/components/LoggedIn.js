@@ -16,10 +16,13 @@ export default function LoggedIn() {
             {/*Wrapper and buttons for account nav*/}
             <div className="wrapper">
                 <div className="buttonColumn">
-                    <button className="btn btn-md btn-danger center modal-button btnFormat2" type="button">Trade Store</button>
-                    <button className="btn btn-md btn-danger center modal-button btnFormat2" type="button">Prior Trades</button>
-                    <button className="btn btn-md btn-danger center modal-button btnFormat2" type="button">Notifications</button>
-                    <button className="btn btn-md btn-danger center modal-button btnFormat2" type="button">Settings</button>
+                    <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Trade Store</button>
+                    <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Prior Trades</button>
+                    <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Notifications</button>
+                    <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Settings</button>
+                </div>
+                <div className="contentColumn">
+                    <div className="addItem"><button className="btn btn-sm btn-danger center modal-button btnFormat3">Add item</button></div>
                 </div>
             </div>
         </>

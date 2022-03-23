@@ -41,11 +41,7 @@ const reducer = (state, action) => {
 
 const App = () => {
     const triggerText = 'Sign Up';
-    const onSubmit = (event) => {
-        event.preventDefault(event);
-        console.log(event.target.name.value);
-        console.log(event.target.email.value);
-    };
+    
     const [state, dispatch] = React.useReducer(reducer, initialState);
 
     return (
@@ -56,7 +52,7 @@ const App = () => {
         }}>
         <div>
             <Routes>
-                <Route path='/' element={!state.isAuthenticated ? <><Navbar /><Main /><div className="loginform"><Container triggerText={triggerText} onSubmit={onSubmit}/></div><Login/></> : <LoggedIn/>}/>
+                <Route path='/' element={!state.isAuthenticated ? <><Navbar /><Main /><div className="loginform"><Container triggerText={triggerText}/></div><Login/></> : <LoggedIn/>}/>
                 <Route path='/about' element={<><Navbar /><About /></>} />
                 <Route path='/contactus' element={<><Navbar /><ContactUs /></>} />
             </Routes>
