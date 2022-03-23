@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+ * Author: Joe Woods
+ * A simple component to hold the ContactUs information
+ */
+
 export default function ContactUs() {
     return (
         <main>

@@ -1,24 +1,37 @@
 import React, { Component } from "react";
 import { Modal } from "./Modal";
 import TriggerButton from "./TriggerButton";
+
+/**
+ * Author: Joe Woods
+ * This component can be used to contain a modal that is triggered by a button
+ * it takes triggerText and OnSubmit props
+ */
+
+
 export class Container extends Component {
+    //Setup of initial state of modal
     state = { isShown: false };
     showModal = () => {
         this.setState({ isShown: true }, () => {
             this.closeButton.focus();
         });
+        //Locks scroll lock portion
         this.toggleScrollLock();
     };
+    //handles closing of modal
     closeModal = () => {
         this.setState({ isShown: false });
         this.TriggerButton.focus();
         this.toggleScrollLock();
     };
+    //esc key
     onKeyDown = (event) => {
         if (event.keyCode === 27) {
             this.closeModal();
         }
     };
+    //handle clicking off modal to go back to window
     onClickOutside = (event) => {
         if (this.modal && this.modal.contains(event.target)) return;
         this.closeModal();
@@ -29,6 +42,7 @@ export class Container extends Component {
     };
     render() {
         return (
+            //React fragment to hold two components - TriggerButton and Modal
             <React.Fragment>
                 <TriggerButton
                     showModal={this.showModal}

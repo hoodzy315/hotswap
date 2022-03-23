@@ -181,7 +181,7 @@ nav {
 
 .btnFormat2 {
   background-color: rgb(25, 160, 25);
-  margin-bottom: .2em;
+  margin: .25em;
 }
 
 .formFormat {
@@ -218,7 +218,7 @@ a {
 		width: 95%;
     height: 100%;
 		border: 1px solid #000033;
-		box-shadow: 9px 9px 9px #AA7539;
+		box-shadow: 9px 9px 9px rgb(24, 86, 167);;
 		display: grid;
 		grid-template-rows: auto;
 		grid-template-columns: 12.25em 1fr 1fr;
@@ -229,12 +229,12 @@ a {
 
 }
 
-.nav--welcome {
-}
+
 
 .buttonColumn {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: 1em;
+  
+  background-color:#6b30b8;
 }

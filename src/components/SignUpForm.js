@@ -2,9 +2,14 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+/**
+ * Author: Joe Woods
+ * This component handles the sign up verification form, it uses Yup to verify that passwords match
+ * and also that they are 6 characters long. Also uses useForm to hook the form
+ */
 
 export const SignUpForm= ({ onSubmit }) => {
-    // form validation rules 
+    // form validation setup
     const validationSchema = Yup.object().shape({
         password: Yup.string()
             .required('Password is required')
@@ -14,12 +19,14 @@ export const SignUpForm= ({ onSubmit }) => {
             .oneOf([Yup.ref('password')], 'Passwords must match')
             
     });
+    //Setup resolver
     const formOptions = { resolver: yupResolver(validationSchema) };
 
-    // get functions to build form with useForm() hook
+    // get functions to build form with hook-form
     const { register, handleSubmit, reset, formState } = useForm(formOptions);
     const { errors } = formState;
 
+    //Handle data submit
     function onSubmit(data) {
         // display form data on success
         alert('SUCCESS!! :-)\n\n' + JSON.stringify(data, null, 4));
@@ -39,6 +46,7 @@ export const SignUpForm= ({ onSubmit }) => {
             </div>
             <div className="form-group">
                 <label htmlFor="password">Password (6 characters minimum):</label>
+                {/**Register password to Yup */}
                 <input
                     name="password"
                     type="password"

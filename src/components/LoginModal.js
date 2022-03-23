@@ -3,6 +3,11 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import LoginForm from "./LoginForm";
 
+/**
+ * Author: Joe Woods
+ * This component is the modal for logging in, it uses react-bootstrap for the modal.
+ */
+
 const LoginModal = (props) => {
     return (
         <>

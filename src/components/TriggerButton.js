@@ -1,4 +1,9 @@
 import React from "react";
+/**
+ * Author: Joe Woods
+ * This component handles the custom trigger button
+ */
+
 const Trigger = ({ triggerText, buttonRef, showModal }) => {
     return (
         <button

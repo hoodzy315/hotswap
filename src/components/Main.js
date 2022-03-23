@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+ * Author: Joe Woods
+ * Simple component to handle the main of the landing page
+ */
+
 export default function Main() {
     return (
         <main>

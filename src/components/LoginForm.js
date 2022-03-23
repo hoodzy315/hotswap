@@ -1,21 +1,34 @@
 import React from 'react';
 import { AuthContext } from '../App';
 
+/**
+ * Author: Joe Woods
+ * This handles the login form and authentication verification
+ */
+
 export const LoginForm = () => {
+    //Bring in dispatch from AuthContext
     const { dispatch } = React.useContext(AuthContext);
+
+    //Setup of initial state and variable for email and password
     const initialState = {
         email: "",
         password: "",
         isSubmitting: false,
         errorMessage: null
     };
+    //Grab state from app for authentication
     const [data, setData] = React.useState(initialState);
+
+    //Function to handle setting the data for submission
     const handleInputChange = event => {
         setData({
             ...data,
             [event.target.name]: event.target.value
         });
     };
+
+    //Set data and fetch from API
     const handleFormSubmit = event => {
         event.preventDefault();
         setData({
@@ -23,6 +36,7 @@ export const LoginForm = () => {
             isSubmitting: true,
             errorMessage: null
         });
+        //Fetching login data
         fetch("https://hookedbe.herokuapp.com/api/login", {
             method: "post",
             headers: {
@@ -39,12 +53,14 @@ export const LoginForm = () => {
                 }
                 throw res;
             })
+            //Attempt to dispatch login
             .then(resJson => {
                 dispatch({
                     type: "LOGIN",
                     payload: resJson
                 })
             })
+            //Handle ereror
             .catch(error => {
                 setData({
                     ...data,
@@ -54,6 +70,7 @@ export const LoginForm = () => {
             });
     };
     return (
+        //Form for login
         <form onSubmit={handleFormSubmit}>
             <div className="form-group">
                 <label htmlFor="email">Email address</label>

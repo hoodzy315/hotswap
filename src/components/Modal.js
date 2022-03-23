@@ -4,6 +4,12 @@ import SignUpForm from './SignUpForm';
 import FocusTrap from "focus-trap-react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+/**
+ * Author: Joe Woods
+ * This component handles the dimming effect for any modal
+ * Uses focus-trap-react and bootstrap css
+ */
+
 export const Modal = ({
     onClickOutside,
     onKeyDown,
@@ -38,6 +44,7 @@ export const Modal = ({
                         </svg>
                     </button>
                     <div className="modal-body">
+                        {/**display sign up form component */}
                         <SignUpForm onSubmit={onSubmit} />
                     </div>
                 </div>
