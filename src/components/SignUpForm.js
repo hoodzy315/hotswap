@@ -30,6 +30,8 @@ export const SignUpForm = ({ closeModal }) => {
     //Setup resolver
     const formOptions = { resolver: yupResolver(validationSchema) };
 
+    
+
     // get functions to build form with hook-form
     const { register, handleSubmit, reset, formState } = useForm(formOptions);
     const { errors } = formState;
@@ -39,7 +41,7 @@ export const SignUpForm = ({ closeModal }) => {
         fetch("https://gorest.co.in/public/v2/users", {
             method: "POST",
             headers: {
-                "Authorization": "Bearer 60a790e17bec312bc775cd011dc4cf308ddef2bdb766db0cd398af1f7dce2fca",
+                "Authorization": 'Bearer ' + process.env.REACT_APP_BEARER,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
@@ -52,7 +54,6 @@ export const SignUpForm = ({ closeModal }) => {
             .then((response) => response.json())
             .then((responseData) => {
                 console.log(responseData);
-            
             })
 
             closeModal();
