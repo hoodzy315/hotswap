@@ -1,11 +1,9 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-import Main from "./components/Main";
 import About from "./components/About";
 import ContactUs from "./components/ContactUs";
-import Container from "./components/Container";
-import Login from "./components/Login";
 import LoggedIn from "./components/LoggedIn";
+import LandingPage from "./components/LandingPage";
 import { Routes, Route } from "react-router-dom";
 
 export const AuthContext = React.createContext();
@@ -52,7 +50,7 @@ const App = () => {
         }}>
         <div>
             <Routes>
-                <Route path='/' element={!state.isAuthenticated ? <><Navbar /><Main /><div className="loginform"><Container triggerText={triggerText}/></div><Login/></> : <LoggedIn/>}/>
+                <Route path='/' element={!state.isAuthenticated ? <LandingPage/> : <LoggedIn/>}/>
                 <Route path='/about' element={<><Navbar /><About /></>} />
                 <Route path='/contactus' element={<><Navbar /><ContactUs /></>} />
             </Routes>

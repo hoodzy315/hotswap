@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "./Navbar";
+import { Link } from "react-router-dom";
 import { AuthContext } from '../App';
 import TriggerButton from './TriggerButton';
 
@@ -22,7 +23,9 @@ export default function LoggedIn() {
                     <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Settings</button>
                 </div>
                 <div className="contentColumn">
-                    <div className="addItem"><button className="btn btn-sm btn-danger center modal-button btnFormat3">Add item</button></div>
+                    <Link to="/additem">
+                        <div className="addItem"><button className="btn btn-sm btn-danger center modal-button btnFormat3">Add item</button></div>
+                    </Link>
                 </div>
             </div>
         </>
