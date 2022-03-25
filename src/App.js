@@ -4,7 +4,10 @@ import About from "./components/About";
 import ContactUs from "./components/ContactUs";
 import LoggedIn from "./components/LoggedIn";
 import LandingPage from "./components/LandingPage";
+import AddItem from "./components/AddItem";
+
 import { Routes, Route } from "react-router-dom";
+
 
 export const AuthContext = React.createContext();
 const initialState = {
@@ -53,6 +56,7 @@ const App = () => {
                 <Route path='/' element={!state.isAuthenticated ? <LandingPage/> : <LoggedIn/>}/>
                 <Route path='/about' element={<><Navbar /><About /></>} />
                 <Route path='/contactus' element={<><Navbar /><ContactUs /></>} />
+                <Route path='/additem' element={!state.isAuthenticated ? <LandingPage/> : <AddItem/>}/>
             </Routes>
         </div>
         </AuthContext.Provider>
