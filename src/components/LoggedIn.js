@@ -1,7 +1,8 @@
 import React from "react";
 import NavBar from "./Navbar";
 import { Link } from "react-router-dom";
-
+import { AuthContext } from '../App';
+import TriggerButton from './TriggerButton';
 
 /**
  * Author: Joe Woods

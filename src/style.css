@@ -31,6 +31,8 @@ body {
     margin-left: 2em;
 }
 
+
+
 nav {
   display: flex;
   align-items: center;
@@ -164,6 +166,7 @@ nav {
   width: 8.75em;
 }
 
+
 .flex-container {
   display: flex;
 }
@@ -243,6 +246,8 @@ a {
   margin-top: .8em;
 
 }
+
+
 
 .buttonColumn {
   display: flex;
