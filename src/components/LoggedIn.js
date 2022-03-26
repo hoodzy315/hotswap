@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "./Navbar";
 import { Link } from "react-router-dom";
+import DisplayItems from "./DisplayItems";
 
 
 /**
@@ -22,9 +23,12 @@ export default function LoggedIn() {
                     <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Settings</button>
                 </div>
                 <div className="contentColumn">
-                    <Link to="/additem">
-                        <div className="addItem"><button className="btn btn-sm btn-danger center modal-button btnFormat3">Add item</button></div>
-                    </Link>
+                    <div className="addItem">
+                        <Link to="/additem">
+                            <button className="btn btn-sm btn-danger center modal-button btnFormat3">Add item</button>
+                        </Link>
+                    </div>
+                    <DisplayItems/>
                 </div>
             </div>
         </>
