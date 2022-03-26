@@ -1,8 +1,10 @@
 import React from "react";
-import axios from "axios";
 import Product from "./Product";
-import { useState, useEffect } from "react";
-import { render } from "@testing-library/react";
+
+/**
+ * Author: Joe Woods
+ * This component is used to display all of the store items
+ */
 
 class DisplayItems extends React.Component {
     constructor(props) {
