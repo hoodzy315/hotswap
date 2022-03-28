@@ -1,36 +1,52 @@
 import { useState } from "react";
+import { AuthContext } from "../App";
+import React from 'react';
+import axios from 'axios';
 
 /**
  * Author: Joe Woods
  * Form for submitting a new item
  */
 
-export default function ImageUpload() {
+export default function NewItemForm() {
+    const { state } = React.useContext(AuthContext);
     const [file, setFile] = useState(null);
     const [description, setDescription] = useState(null);
     const [itemName, setItemName] = useState(null);
+    const [itemBrand, setItemBrand] = useState(null);
     const [price, setPrice] = useState(null);
     const [condition, setCondition] = useState(null);
+    const [category, setCategory] = useState(null);
 
     const submitForm = (event) => {
         event.preventDefault();
 
-        const dataArray = new FormData();
-        dataArray.append("itemName", itemName);
-        dataArray.append("file", file);
-        dataArray.append("description", description);
-        dataArray.append("price", price);
-        dataArray.append("condition", condition);
+        let dataArray = new FormData();
+        dataArray.append('name', itemName);
+        dataArray.append('brand', itemBrand);
+        dataArray.append('image', file[0]);
+        dataArray.append('condition', condition);
+        dataArray.append('itemCategory', category);
+        dataArray.append('description', description);
+        dataArray.append('approximateMarketVal', price);
+        console.log(dataArray);
 
-        const testItem = JSON.stringify({
-            name: itemName,
-            file: file,
-            description: description,
-            price: price,
-            condition: condition
-        });
+        for (var [key, value] of dataArray.entries()) { 
+            console.log(key, value);
+        }
 
-        console.log(testItem);
+        const config = {
+            headers: {
+                "Authorization": "Bearer " + state.token
+            }
+        }
+
+
+        axios.post("http://localhost:4200/api/userstore/trades/" + state.userStore, dataArray, config)
+            .then (res => {
+                console.log(res.data);
+            })
+
     };
     return (
         <div className="upload">
@@ -40,19 +56,25 @@ export default function ImageUpload() {
                     onChange={(e) => setItemName(e.target.value)}
                     placeholder={"Item Name"}
                 />
-                <br/>
-                <input className="uploadfrmt" type="file" onChange={(e) => setFile(e.target.files)} />
-                <br/>
-                <textarea onChange={(e) => setDescription(e.target.value)}>Description</textarea>
-                <br/>
+                <br />
                 <input
                     type="text"
-                    onChange={(e) => setPrice(e.target.value)}
-                    placeholder={"price"}
+                    onChange={(e) => setItemBrand(e.target.value)}
+                    placeholder={"Item Brand"}
                 />
-                <br/>
+                <br />
+                <input className="uploadfrmt" type="file" onChange={(e) => setFile(e.target.files)} />
+                <br />
+                <input type="text" placeholder={"Description"} onChange={(e) => setDescription(e.target.value)}></input>
+                <br />
+                <input
+                    type="number"
+                    onChange={(e) => setPrice(e.target.value)}
+                    placeholder={"value"}
+                />
+                <br />
                 <label className="uploadfrmt" htmlFor="condition">Condition</label>
-                <select onSubmit={(e) => setCondition(e.target.value)}>
+                <select onChange={(e) => setCondition(e.target.value)}>
                     <option>
                         New (still in packaging)
                     </option>
@@ -66,7 +88,13 @@ export default function ImageUpload() {
                         Poor
                     </option>
                 </select>
-                <br/>
+                <br />
+                <input
+                    type="text"
+                    onChange={(e) => setCategory(e.target.value)}
+                    placeholder={"Category"}
+                />
+                <br></br>
                 <input className="uploadfrmt" type="submit" />
             </form>
         </div>

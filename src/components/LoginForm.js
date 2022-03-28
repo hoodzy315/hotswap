@@ -29,7 +29,7 @@ export const LoginForm = () => {
     };
 
     //Set data and fetch from API
-    const handleFormSubmit = event => {
+    const handleFormSubmit = async event => {
         event.preventDefault();
         setData({
             ...data,
@@ -37,7 +37,7 @@ export const LoginForm = () => {
             errorMessage: null
         });
         //Fetching login data
-        fetch("https://hookedbe.herokuapp.com/api/login", {
+        await fetch("http://localhost:4200/api/users/login", {
             method: "post",
             headers: {
                 "Content-Type": "application/json"

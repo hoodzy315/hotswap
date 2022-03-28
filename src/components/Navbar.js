@@ -20,7 +20,7 @@ export default function NavBar() {
             {state.isAuthenticated && (
                 <div>
                     <h3 className="nav--dashboard">Dashboard</h3>
-                    <h4 className="nav--welcome">Welcome, {state.user.firstName}</h4>
+                    <h4 className="nav--welcome">Welcome, {state.user}</h4>
                 </div>
             )}
             <h3 className="nav--about"><Link to="/about">About</Link></h3>

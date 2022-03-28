@@ -25,7 +25,7 @@ export const SignUpForm = ({ closeModal }) => {
         addressTwo: Yup.string(),
         city: Yup.string(),
         state: Yup.string(),
-        zip: Yup.number()
+        zip: Yup.string()
     });
     //Setup resolver
     const formOptions = { resolver: yupResolver(validationSchema) };
@@ -38,17 +38,20 @@ export const SignUpForm = ({ closeModal }) => {
 
     //Handle data submit
     function onSubmit(data) {
-        fetch("https://gorest.co.in/public/v2/users", {
+        fetch("http://localhost:4200/api/users/register", {
             method: "POST",
             headers: {
-                "Authorization": 'Bearer ' + process.env.REACT_APP_BEARER,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                name: data.username,
+                username: data.username,
+                password: data.password,
                 email: data.email,
-                gender: data.city,
-                status: data.addressOne
+                shippingAddressLine1: data.addressOne,
+                shippingAddressLine2: data.addressTwo,
+                city: data.city,
+                state: data.state,
+                zip: data.zip
             })
         })
             .then((response) => response.json())
@@ -114,7 +117,7 @@ export const SignUpForm = ({ closeModal }) => {
                 <input
                     name="shippingLineTwo"
                     type="text"
-                    {...register('addresTwo')}
+                    {...register('addressTwo')}
                     className='form-control'
                 />
             </div>
@@ -151,10 +154,10 @@ export const SignUpForm = ({ closeModal }) => {
                 </div>
                 <div className="flex-child3">
                     <div className="form-group">
-                        <label htmlFor="number">Zip</label>
+                        <label htmlFor="text">Zip</label>
                         <input
                             name="city"
-                            type="number"
+                            type="text"
                             {...register('zip')}
                             maxLength="5"
                             minLength="5"

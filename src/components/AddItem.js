@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NavBar from "./Navbar";
-import ImageUpload from "./newItemForm";
+import NewItemForm from "./newItemForm";
 
 /**
  * Author: Joe Woods
@@ -21,7 +21,7 @@ export default function AddItem() {
                     <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Settings</button>
                 </div>
                 <div className="contentColumn">
-                    <ImageUpload/>
+                    <NewItemForm/>
                 </div>
             </div>
         </>
