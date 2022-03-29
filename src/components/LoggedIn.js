@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "./Navbar";
 import { Link } from "react-router-dom";
 import DisplayItems from "./DisplayItems";
+import { AuthContext } from "../App";
 
 
 /**
@@ -10,6 +11,13 @@ import DisplayItems from "./DisplayItems";
  */
 
 export default function LoggedIn() {
+    const { state } = React.useContext(AuthContext);
+    console.log(state.userId);
+    const config = {
+        headers: {
+            "Authorization": "Bearer " + state.token
+        }
+    }
     return (
         <>
             {/*Navbar component*/}
@@ -20,7 +28,9 @@ export default function LoggedIn() {
                     <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Trade Store</button>
                     <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Prior Trades</button>
                     <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Notifications</button>
-                    <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Settings</button>
+                    <Link to="/settings">
+                        <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Settings</button>
+                    </Link> 
                 </div>
                 <div className="contentColumn">
                     <div className="addItem">
@@ -28,7 +38,7 @@ export default function LoggedIn() {
                             <button className="btn btn-sm btn-danger center modal-button btnFormat3">Add item</button>
                         </Link>
                     </div>
-                    <DisplayItems/>
+                    <DisplayItems config={config} userStore={state.userStore}/>
                 </div>
             </div>
         </>

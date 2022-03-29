@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import Product from "./Product";
 
@@ -16,15 +17,16 @@ class DisplayItems extends React.Component {
     }
 
     componentDidMount() {
-        fetch("https://fakestoreapi.com/products")
-            .then((res) => res.json())
-            .then(data => {
-                console.log(data)
+        axios.get("https://damp-fjord-26738.herokuapp.com/api/userstore/trades/" + this.props.userStore, this.props.config)
+            .then (res => {
+                console.log(typeof(res.data));
                 this.setState({
                     isLoaded: true,
-                    items: data,
+                    items: res.data.itemsForTrade,
                 });
-            });
+            })
+
+            
     }
     render() {
         var { isLoaded, items } = this.state;
@@ -33,6 +35,7 @@ class DisplayItems extends React.Component {
             return <div>Loading...</div>
         } else {
             console.log(items);
+            console.log(typeof(items));
             return (
                 <>
                 <h1>Store</h1>
@@ -40,8 +43,8 @@ class DisplayItems extends React.Component {
                 <div className="storeGrid">
                     {
                         this.state.items.map(item => <Product 
-                            key={item.id}
-                            item={item.title}
+                            key={item._id}
+                            item={item.name}
                             img={item.image}
                             />)
                     }

@@ -42,7 +42,7 @@ export default function NewItemForm() {
         }
 
 
-        axios.post("http://localhost:4200/api/userstore/trades/" + state.userStore, dataArray, config)
+        axios.post("https://damp-fjord-26738.herokuapp.com/api/userstore/trades/" + state.userStore, dataArray, config)
             .then (res => {
                 console.log(res.data);
             })

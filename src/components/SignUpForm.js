@@ -38,7 +38,7 @@ export const SignUpForm = ({ closeModal }) => {
 
     //Handle data submit
     function onSubmit(data) {
-        fetch("http://localhost:4200/api/users/register", {
+        fetch("https://damp-fjord-26738.herokuapp.com/api/users/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

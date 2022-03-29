@@ -37,7 +37,7 @@ export const LoginForm = () => {
             errorMessage: null
         });
         //Fetching login data
-        await fetch("http://localhost:4200/api/users/login", {
+        await fetch("https://damp-fjord-26738.herokuapp.com/api/users/login", {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
