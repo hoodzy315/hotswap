@@ -28,13 +28,11 @@ export default function LoggedIn() {
                     <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Trade Store</button>
                     <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Prior Trades</button>
                     <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Notifications</button>
-                    <Link to="/settings">
-                        <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Settings</button>
-                    </Link> 
+                    <Link className ="btn btn-lg btn-danger center modal-button btnFormat2" to="/settings">Settings</Link> 
                 </div>
                 <div className="contentColumn">
                     <div className="addItem">
-                        <Link to="/additem">
+                        <Link className ="empty" to="/additem">
                             <button className="btn btn-sm btn-danger center modal-button btnFormat3">Add item</button>
                         </Link>
                     </div>
