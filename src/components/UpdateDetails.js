@@ -5,7 +5,7 @@ import axios from 'axios';
 
 /**
  * Author: Joe Woods
- * Form for submitting a new item
+ * This component handles updating items on the users account
  */
 
 export default function NewItemForm() {
@@ -22,21 +22,14 @@ export default function NewItemForm() {
     const updateUser = (event) => {
         event.preventDefault();
 
-        let dataArray = JSON.stringify({
-            username: newUsername
-        })
-
-        console.log(dataArray);
-        console.log(state.userId);
-
-
         const config = {
             headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
                 "Authorization": "Bearer " + state.token
             }
         }
 
-        axios.patch("https://damp-fjord-26738.herokuapp.com/api/users/update/username/" + state.userId, dataArray, config)
+        axios.patch("https://damp-fjord-26738.herokuapp.com/api/users/update/username/" + state.userId, 'username=' + newUsername)
             .then(res => {
                 console.log(res.data);
             })
@@ -46,9 +39,23 @@ export default function NewItemForm() {
     const updatePassword = (event) => {
         event.preventDefault();
 
+        const config = {
+            headers: {
+                "Authorization": "Bearer " + state.token
+            }
+        }
+
+        axios.patch("https://damp-fjord-26738.herokuapp.com/api/users/update/password/" + state.userId, 'password=' + newPass)
+            .then(res => {
+                console.log(res.data);
+            })
+
+    };
+
+    const updateOthers = (event) => {
+        event.preventDefault();
         let dataArray = new FormData();
-        dataArray.append('password', newPass);
-        console.log(newPass);
+        let data = {};
 
         const config = {
             headers: {
@@ -56,7 +63,38 @@ export default function NewItemForm() {
             }
         }
 
-        axios.patch("https://damp-fjord-26738.herokuapp.com/api/users/update/password/" + state.userId, dataArray, config)
+        console.log(newEmail);
+        console.log(newsal2);
+
+        if(newEmail != null){
+            dataArray.append("email", newEmail);
+        }
+
+        if(newsal1 != null){
+            dataArray.append("shippingAddressLine1", newsal1);
+        }
+
+        if(newsal2 != null){
+            dataArray.append("shippingAddressLine2", newsal2);
+        }
+
+        if(newCity != null){
+            dataArray.append("city", newCity);
+        }
+
+        if(newState != null){
+            dataArray.append("state", newState);
+        }
+
+        if(newZip != null){
+            dataArray.append("zip", newZip);
+        }
+
+        dataArray.forEach((value, key) => data[key] = value);
+
+        console.log(data);
+
+        axios.patch("https://damp-fjord-26738.herokuapp.com/api/users/update/address/" + state.userId, data)
             .then(res => {
                 console.log(res.data);
             })
@@ -70,7 +108,7 @@ export default function NewItemForm() {
                 <input
                     type="text"
                     onChange={(e) => setnewUsername(e.target.value)}
-                    placeholder={"New Username"}
+                    placeholder={"Change Username"}
                 />
                 <input className="uploadfrmt" type="submit" />
             </form>
@@ -79,7 +117,40 @@ export default function NewItemForm() {
                 <input
                     type="text"
                     onChange={(e) => setnewPass(e.target.value)}
-                    placeholder={"New password"}
+                    placeholder={"Change password"}
+                />
+                <input className="uploadfrmt" type="submit" />
+            </form>
+            <form className="" onSubmit={updateOthers}>
+                <input
+                    type="email"
+                    onChange={(e) => setNewEmail(e.target.value)}
+                    placeholder={"Change Email"}
+                />
+                <input
+                    type="text"
+                    onChange={(e) => setnewsal1(e.target.value)}
+                    placeholder={"Change shipping address line 1"}
+                />
+                <input
+                    type="text"
+                    onChange={(e) => setnewsal2(e.target.value)}
+                    placeholder={"Change shipping address line 2"}
+                />
+                <input
+                    type="text"
+                    onChange={(e) => setnewCity(e.target.value)}
+                    placeholder={"Change city"}
+                />
+                <input
+                    type="text"
+                    onChange={(e) => setnewState(e.target.value)}
+                    placeholder={"Change state"}
+                />
+                <input
+                    type="text"
+                    onChange={(e) => setnewZip(e.target.value)}
+                    placeholder={"Change zip"}
                 />
                 <input className="uploadfrmt" type="submit" />
             </form>

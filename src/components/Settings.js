@@ -4,7 +4,7 @@ import UpdateDetails from "./UpdateDetails";
 
 /**
  * Author: Joe Woods
- * This component is the layout for adding an item
+ * This component is the layout for updating user account settings
  */
 
 export default function Settings() {
