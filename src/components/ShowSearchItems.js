@@ -6,7 +6,7 @@ import { AuthContext } from '../App';
 /**
  * Author: Joe Woods
  * This component is used to display searched items
- * auth token prop must be handed in as a prop
+ * auth token prop must be passed in
  */
 
 class ShowSearchItems extends React.Component {
