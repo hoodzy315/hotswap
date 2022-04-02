@@ -1,7 +1,8 @@
 import NavBar from "./Navbar";
-import SearchStore from "./SearchStore";
 import { Link } from "react-router-dom";
 import ShowSearchItems from "./ShowSearchItems";
+import { AuthContext } from "../App";
+import React from "react";
 
 /**
  * Author: Joe Woods
@@ -9,9 +10,9 @@ import ShowSearchItems from "./ShowSearchItems";
  */
 
 export default function TradeStore() {
-    const sr = null;
-    const searched = false;
-    
+    let sr = null;
+    const { state } = React.useContext(AuthContext);
+
     return (
         <>
             {/*Navbar component*/}
@@ -25,8 +26,7 @@ export default function TradeStore() {
                     <Link className ="btn btn-lg btn-danger center modal-button btnFormat2" to="/settings">Settings</Link> 
                 </div>
                 <div className="contentColumn">
-                    <SearchStore sr={sr} searched={searched}/>
-                    <ShowSearchItems sr={sr} searched={searched}/>
+                    <ShowSearchItems app={state}/>
                 </div>
             </div>
         </>

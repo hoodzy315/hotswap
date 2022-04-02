@@ -18,6 +18,7 @@ const initialState = {
     userId: null,
     userStore: null,
     token: null,
+    searched: false,
 };
 
 const reducer = (state, action) => {

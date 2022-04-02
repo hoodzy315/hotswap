@@ -1,9 +1,12 @@
 import React from "react";
 import Product from "./Product";
+import axios from 'axios';
+import { AuthContext } from '../App';
 
 /**
  * Author: Joe Woods
- * This component is used to display all of the store items
+ * This component is used to display searched items
+ * auth token prop must be handed in as a prop
  */
 
 class ShowSearchItems extends React.Component {
@@ -11,35 +14,118 @@ class ShowSearchItems extends React.Component {
         super(props);
         this.state = {
             items: [],
-            isLoaded: false
+            isLoaded: false,
+            keyword: "",
+            category: "",
         };
     }
 
-    componentDidMount() {
-                this.setState({
-                    isLoaded: this.props.searched,
-                    items: this.props.sr,
-                });
+    submitForm = (event) => {
+        event.preventDefault();
+
+        const config = {
+            headers: {
+                "Authorization": "Bearer " + this.props.token
             }
+        }
+
+
+        axios.get("https://damp-fjord-26738.herokuapp.com/api/tradestore?k=" + this.state.keyword, config)
+            .then(res => {
+                this.setState({
+                    isLoaded: true,
+                    items: res.data.searchResults,
+                });
+            })
+    }
+
+    setKeyword = (e) => {
+        this.state.keyword = e;
+    }
+
+    setCategory = (e) => {
+        this.state.category = e;
+    }
+
     render() {
         var { isLoaded } = this.state;
-
         if (!isLoaded) {
-            return <div></div>
+            return (
+                <div className="upload">
+                    <form className="uploadForm" onSubmit={this.submitForm}>
+                        <input
+                            type="text"
+                            onChange={(e) => this.setKeyword(e.target.value)}
+                            placeholder={"Search keywords"}
+                        />
+                        <br />
+                        <label className="uploadfrmt" htmlFor="condition">Condition</label>
+                        <select onChange={(e) => this.setCategory(e.target.value)}>
+                            <option>
+                                Any
+                            </option>
+                            <option>
+                                Toys
+                            </option>
+                            <option>
+                                Collectibles
+                            </option>
+                            <option>
+                                Furniture
+                            </option>
+                            <option>
+                                Electronics
+                            </option>
+                        </select>
+                        <br></br>
+                        <input className="uploadfrmt" type="submit" value="Search" />
+                    </form>
+                </div>
+            );
         } else {
             return (
                 <>
-                <h1>Search Results</h1>
-                <br/>
-                <div className="storeGrid">
-                    {
-                        this.state.items.map(item => <Product 
-                            key={item._id}
-                            item={item.name}
-                            img={item.image}
+                    <div className="upload">
+                        <form className="uploadForm" onSubmit={this.submitForm}>
+                            <input
+                                type="text"
+                                onChange={(e) => this.setKeyword(e.target.value)}
+                                placeholder={"Search keywords"}
+                            />
+                            <br />
+                            <label className="uploadfrmt" htmlFor="condition">Condition</label>
+                            <select onChange={(e) => this.setCategory(e.target.value)}>
+                                <option>
+                                    Any
+                                </option>
+                                <option>
+                                    Toys
+                                </option>
+                                <option>
+                                    Collectibles
+                                </option>
+                                <option>
+                                    Furniture
+                                </option>
+                                <option>
+                                    Electronics
+                                </option>
+                            </select>
+                            <br></br>
+                            <input className="uploadfrmt" type="submit" value="Search" />
+                        </form>
+                    </div>
+                    <h1>Search Results</h1>
+                    <br />
+                    <div className="storeGrid">
+                        {
+                            this.state.items.map(item => <Product
+                                key={item._id}
+                                item={item.name}
+                                img={item.image}
                             />)
-                    }
-                </div>
+                        }
+                    </div>
                 </>
             )
         }
