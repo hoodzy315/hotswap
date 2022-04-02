@@ -1,22 +1,17 @@
-import React from "react";
 import NavBar from "./Navbar";
+import SearchStore from "./SearchStore";
 import { Link } from "react-router-dom";
-import DisplayItems from "./DisplayItems";
-import { AuthContext } from "../App";
-
+import ShowSearchItems from "./ShowSearchItems";
 
 /**
  * Author: Joe Woods
- * This component is the layout for the dashboard when you are logged in
+ * This component is the layout for adding an item
  */
 
-export default function LoggedIn() {
-    const { state } = React.useContext(AuthContext);
-    const config = {
-        headers: {
-            "Authorization": "Bearer " + state.token
-        }
-    }
+export default function TradeStore() {
+    const sr = null;
+    const searched = false;
+    
     return (
         <>
             {/*Navbar component*/}
@@ -30,12 +25,8 @@ export default function LoggedIn() {
                     <Link className ="btn btn-lg btn-danger center modal-button btnFormat2" to="/settings">Settings</Link> 
                 </div>
                 <div className="contentColumn">
-                    <div className="addItem">
-                        <Link className ="empty" to="/additem">
-                            <button className="btn btn-sm btn-danger center modal-button btnFormat3">Add item</button>
-                        </Link>
-                    </div>
-                    <DisplayItems config={config} userStore={state.userStore}/>
+                    <SearchStore sr={sr} searched={searched}/>
+                    <ShowSearchItems sr={sr} searched={searched}/>
                 </div>
             </div>
         </>

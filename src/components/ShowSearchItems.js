@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import Product from "./Product";
 
@@ -7,7 +6,7 @@ import Product from "./Product";
  * This component is used to display all of the store items
  */
 
-class DisplayItems extends React.Component {
+class ShowSearchItems extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,25 +16,20 @@ class DisplayItems extends React.Component {
     }
 
     componentDidMount() {
-        axios.get("https://damp-fjord-26738.herokuapp.com/api/userstore/trades/" + this.props.userStore, this.props.config)
-            .then (res => {
                 this.setState({
-                    isLoaded: true,
-                    items: res.data.itemsForTrade,
+                    isLoaded: this.props.searched,
+                    items: this.props.sr,
                 });
-            })
-
-            
-    }
+            }
     render() {
         var { isLoaded } = this.state;
 
         if (!isLoaded) {
-            return <div>Loading...</div>
+            return <div></div>
         } else {
             return (
                 <>
-                <h1>Store</h1>
+                <h1>Search Results</h1>
                 <br/>
                 <div className="storeGrid">
                     {
@@ -52,4 +46,4 @@ class DisplayItems extends React.Component {
     }
 }
 
-export default DisplayItems;
+export default ShowSearchItems;

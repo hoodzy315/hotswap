@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import NavBar from "./Navbar";
 import NewItemForm from "./newItemForm";
+import { Link } from "react-router-dom";
 
 /**
  * Author: Joe Woods
@@ -15,10 +15,10 @@ export default function AddItem() {
             {/*Wrapper and buttons for account nav*/}
             <div className="wrapper">
                 <div className="buttonColumn">
-                    <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Trade Store</button>
+                    <Link className ="btn btn-lg btn-danger center modal-button btnFormat2" to="/tradestore">Trade Store</Link> 
                     <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Prior Trades</button>
                     <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Notifications</button>
-                    <button className="btn btn-lg btn-danger center modal-button btnFormat2" type="button">Settings</button>
+                    <Link className ="btn btn-lg btn-danger center modal-button btnFormat2" to="/settings">Settings</Link> 
                 </div>
                 <div className="contentColumn">
                     <NewItemForm/>

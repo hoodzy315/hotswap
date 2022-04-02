@@ -6,6 +6,7 @@ import LoggedIn from "./components/LoggedIn";
 import LandingPage from "./components/LandingPage";
 import AddItem from "./components/AddItem";
 import Settings from "./components/Settings";
+import TradeStore from "./components/TradeStore";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -65,6 +66,7 @@ const App = () => {
                 <Route path='/contactus' element={<><Navbar /><ContactUs /></>} />
                 <Route path='/additem' element={!state.isAuthenticated ? <LandingPage/> : <AddItem/>}/>
                 <Route path='/settings' element={!state.isAuthenticated ? <LandingPage/> : <Settings/>}/>
+                <Route path='/tradestore' element={!state.isAuthenticated ? <LandingPage/> : <TradeStore/>}/>
             </Routes>
         </div>
         </AuthContext.Provider>
