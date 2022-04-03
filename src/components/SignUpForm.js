@@ -2,6 +2,10 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+
+//for toast messages
+import { useContext } from 'react';
+import ToastContext from '../context/ToastContext';
 /**
  * Author: Joe Woods
  * This component handles the sign up verification form, it uses Yup to verify that passwords match
@@ -36,6 +40,21 @@ export const SignUpForm = ({ closeModal }) => {
     const { register, handleSubmit, reset, formState } = useForm(formOptions);
     const { errors } = formState;
 
+    //for toast message when closing the form
+    const { 
+      setIsToastDisplayed, 
+      setToastSummary, 
+      setToastDetail, 
+      setToastSeverity } 
+    = useContext(ToastContext);
+
+    const displayToastMessage = (username) => {
+      setToastSummary(`Welcome ${username}!`);
+      setToastDetail('You have sucessfully registered.  Now please login.');
+      setToastSeverity('info');
+      setIsToastDisplayed(true);
+    }
+
     //Handle data submit
     function onSubmit(data) {
         fetch("https://damp-fjord-26738.herokuapp.com/api/users/register", {
@@ -60,6 +79,7 @@ export const SignUpForm = ({ closeModal }) => {
             })
 
             closeModal();
+            displayToastMessage(data.username);
     }
     return (
         <form className="formFormat" onSubmit={handleSubmit(onSubmit)}>

@@ -10,15 +10,17 @@ export const LoginForm = () => {
     //Bring in dispatch from AuthContext
     const { dispatch } = React.useContext(AuthContext);
 
-    //Setup of initial state and variable for email and password
+    //Setup of initial state and variable for username and password
     const initialState = {
-        email: "",
+        username: "",
         password: "",
         isSubmitting: false,
         errorMessage: null
     };
     //Grab state from app for authentication
     const [data, setData] = React.useState(initialState);
+    //Error displays if error in logging in
+    const [isError, setIsError] = React.useState(false);
 
     //Function to handle setting the data for submission
     const handleInputChange = event => {
@@ -26,7 +28,9 @@ export const LoginForm = () => {
             ...data,
             [event.target.name]: event.target.value
         });
+        setIsError(false);
     };
+
 
     //Set data and fetch from API
     const handleFormSubmit = async event => {
@@ -43,7 +47,7 @@ export const LoginForm = () => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                username: data.email,
+                username: data.username,
                 password: data.password
             })
         })
@@ -67,21 +71,24 @@ export const LoginForm = () => {
                     isSubmitting: false,
                     errorMessage: error.message || error.statusText
                 });
+                alert('Username or password was incorrect!');
+                setIsError(true);
             });
     };
     return (
         //Form for login
         <form onSubmit={handleFormSubmit}>
+           {isError && <p className="errorParagraph">There was an error logging in</p>}
             <div className="form-group">
-                <label htmlFor="email">Email address</label>
+                <label htmlFor="username">Username</label>
                 <input
                     type="text"
                     className="form-control"
-                    value={data.email}
+                    value={data.username}
                     onChange={handleInputChange}
-                    id="email"
-                    name="email"
-                    placeholder="name@example.com"
+                    id="username"
+                    name="username"
+                    required
                 />
             </div>
             <div className="form-group">
@@ -93,6 +100,7 @@ export const LoginForm = () => {
                     value={data.password}
                     onChange={handleInputChange}
                     className='form-control'
+                    required
                 />
             </div>
             <div className="form-group">
