@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import { AuthContext } from "../App";
 import React from 'react';
 import axios from 'axios';
 
 import { TRADEITEM_CATEGORIES, TRADEITEM_CONDITIONS } from '../constants/lists';
+
+import ToastContext from '../context/ToastContext';
+import { Toast } from 'primereact/toast';
 
 /**
  * Author: Joe Woods
@@ -19,6 +22,37 @@ export default function NewItemForm() {
     const [price, setPrice] = useState(null);
     const [condition, setCondition] = useState(null);
     const [category, setCategory] = useState(null);
+
+    const addItemForm = useRef(null);
+
+    const { 
+      isToastDisplayed,
+      toastSummary,
+      toastDetail,
+      toastSeverity,
+      setIsToastDisplayed,
+      setToastSummary,
+      setToastDetail,
+      setToastSeverity
+    } = useContext(ToastContext);
+    const toast = useRef(null);
+
+    useEffect(() => {
+        if(toast.current) {
+          // From PrimeReact library, displays toast message for 7 seconds
+          toast.current.show(
+            {
+              severity: toastSeverity,
+              summary: toastSummary,
+              detail: toastDetail,
+              life: 7000
+            }
+          );
+        }
+        setTimeout(() => {
+          setIsToastDisplayed(false);
+        }, 7000);
+    }, [isToastDisplayed])
 
     const submitForm = (event) => {
         event.preventDefault();
@@ -47,13 +81,19 @@ export default function NewItemForm() {
         axios.post("https://damp-fjord-26738.herokuapp.com/api/userstore/trades/" + state.userStore, dataArray, config)
             .then (res => {
                 console.log(res.data);
+                setToastSummary('Success!');
+                setToastDetail('The item was added to your store for trading.');
+                setToastSeverity('info');
+                setIsToastDisplayed(true);
+                addItemForm.current.reset();
             })
 
     };
     return (
         <div className="upload">
+            {isToastDisplayed && <Toast ref={toast}/>}
             <h3 className="dashboard-title">Add Item</h3>
-            <form className="uploadForm" onSubmit={submitForm}>
+            <form className="uploadForm" onSubmit={submitForm} ref={addItemForm}>
                 <label for="item_name">Item Name</label><br/>
                 <input
                     type="text"
@@ -67,7 +107,7 @@ export default function NewItemForm() {
                 <input
                     type="text"
                     onChange={(e) => setItemBrand(e.target.value)}
-                    placeholder={"Item Brand"}
+                    placeholder={"Enter Item Brand"}
                     required
                     id="item_brand"
                 />
@@ -76,7 +116,7 @@ export default function NewItemForm() {
                 <input required className="uploadfrmt" type="file" id="select-file" onChange={(e) => setFile(e.target.files)} />
                 <br />
                 <label for="description">Add Item's Description</label><br/>
-                <input type="text" id="description" required placeholder={"Description"} onChange={(e) => setDescription(e.target.value)}></input>
+                <input type="text" id="description" required placeholder={"Enter Description"} onChange={(e) => setDescription(e.target.value)}></input>
                 <br />
                 <label for="market-val">Approximate Market Value ($)</label><br/>
                 <input

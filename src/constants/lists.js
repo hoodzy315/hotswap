@@ -10,7 +10,7 @@ const TRADEITEM_CATEGORIES = [
 TRADEITEM_CATEGORIES.sort();
 
 const TRADEITEM_CONDITIONS = [
-  'New (still in packaging',
+  'New (still in packaging)',
   'Like New',
   'Used',
   'Poor'
