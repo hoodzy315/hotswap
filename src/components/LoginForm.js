@@ -73,7 +73,7 @@ export const LoginForm = () => {
         //Form for login
         <form onSubmit={handleFormSubmit}>
             <div className="form-group">
-                <label htmlFor="email">Email address</label>
+                <label htmlFor="email">Username</label>
                 <input
                     type="text"
                     className="form-control"
@@ -81,7 +81,6 @@ export const LoginForm = () => {
                     onChange={handleInputChange}
                     id="email"
                     name="email"
-                    placeholder="name@example.com"
                 />
             </div>
             <div className="form-group">
