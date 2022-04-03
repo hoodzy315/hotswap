@@ -47,7 +47,7 @@ const LandingPage = () => {
         return (
             <div>
                 <Navbar/>
-                {isToastDisplayed && <Toast ref={toast} />}
+                {isToastDisplayed && <Toast ref={toast}/>}
                 <Main />
                 <div className="loginform">
                   <Container triggerText={triggerText}/>

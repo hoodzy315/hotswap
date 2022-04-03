@@ -1,6 +1,9 @@
 import React from 'react';
 import { AuthContext } from '../App';
 
+import { useContext, useEffect, useRef } from 'react';
+import ToastContext from '../context/ToastContext';
+
 /**
  * Author: Joe Woods
  * This handles the login form and authentication verification
@@ -19,6 +22,8 @@ export const LoginForm = () => {
     };
     //Grab state from app for authentication
     const [data, setData] = React.useState(initialState);
+    //Error displays if error in logging in
+    const [isError, setIsError] = React.useState(false);
 
     //Function to handle setting the data for submission
     const handleInputChange = event => {
@@ -26,7 +31,9 @@ export const LoginForm = () => {
             ...data,
             [event.target.name]: event.target.value
         });
+        setIsError(false);
     };
+
 
     //Set data and fetch from API
     const handleFormSubmit = async event => {
@@ -67,11 +74,14 @@ export const LoginForm = () => {
                     isSubmitting: false,
                     errorMessage: error.message || error.statusText
                 });
+                alert('Username or password was incorrect!');
+                setIsError(true);
             });
     };
     return (
         //Form for login
         <form onSubmit={handleFormSubmit}>
+           {isError && <p className="errorParagraph">There was an error logging in</p>}
             <div className="form-group">
                 <label htmlFor="username">Username</label>
                 <input
@@ -81,6 +91,7 @@ export const LoginForm = () => {
                     onChange={handleInputChange}
                     id="username"
                     name="username"
+                    required
                 />
             </div>
             <div className="form-group">
@@ -92,6 +103,7 @@ export const LoginForm = () => {
                     value={data.password}
                     onChange={handleInputChange}
                     className='form-control'
+                    required
                 />
             </div>
             <div className="form-group">
