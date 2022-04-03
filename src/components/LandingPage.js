@@ -29,6 +29,7 @@ const LandingPage = () => {
 
         useEffect(() => {
             if(toast.current) {
+              // From PrimeReact library, displays toast message for 7 seconds
               toast.current.show(
                 {
                   severity: toastSeverity,

@@ -13,6 +13,9 @@ import { Routes, Route } from "react-router-dom";
 //Provider for displaying Toast messages
 import { ToastProvider } from './context/ToastContext';
 
+//Allows us to change head HTML tag, such as the document title
+import { Helmet } from 'react-helmet';
+
 //PrimeReact css
 import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
 import "primereact/resources/primereact.min.css";                  //core css
@@ -59,7 +62,6 @@ const reducer = (state, action) => {
 
 
 const App = () => {
-    const triggerText = 'Sign Up';
     
     const [state, dispatch] = React.useReducer(reducer, initialState);
 
@@ -69,6 +71,9 @@ const App = () => {
             state,
             dispatch
         }}>
+        <Helmet>
+          <title>HotSwap.it</title>
+        </Helmet>
         <div>
             <ToastProvider>
               <Routes>
