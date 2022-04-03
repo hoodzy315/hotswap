@@ -10,6 +10,15 @@ import TradeStore from "./components/TradeStore";
 
 import { Routes, Route } from "react-router-dom";
 
+//Provider for displaying Toast messages
+import { ToastProvider } from './context/ToastContext';
+
+//PrimeReact css
+import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
+import "primereact/resources/primereact.min.css";                  //core css
+import "primeicons/primeicons.css";                                //icons
+ 
+
 
 export const AuthContext = React.createContext();
 const initialState = {
@@ -61,14 +70,16 @@ const App = () => {
             dispatch
         }}>
         <div>
-            <Routes>
-                <Route path='/' element={!state.isAuthenticated ? <LandingPage/> : <LoggedIn/>}/>
-                <Route path='/about' element={<><Navbar /><About /></>} />
-                <Route path='/contactus' element={<><Navbar /><ContactUs /></>} />
-                <Route path='/additem' element={!state.isAuthenticated ? <LandingPage/> : <AddItem/>}/>
-                <Route path='/settings' element={!state.isAuthenticated ? <LandingPage/> : <Settings/>}/>
-                <Route path='/tradestore' element={!state.isAuthenticated ? <LandingPage/> : <TradeStore/>}/>
-            </Routes>
+            <ToastProvider>
+              <Routes>
+                  <Route path='/' element={!state.isAuthenticated ? <LandingPage/> : <LoggedIn/>}/>
+                  <Route path='/about' element={<><Navbar /><About /></>} />
+                  <Route path='/contactus' element={<><Navbar /><ContactUs /></>} />
+                  <Route path='/additem' element={!state.isAuthenticated ? <LandingPage/> : <AddItem/>}/>
+                  <Route path='/settings' element={!state.isAuthenticated ? <LandingPage/> : <Settings/>}/>
+                  <Route path='/tradestore' element={!state.isAuthenticated ? <LandingPage/> : <TradeStore/>}/>
+              </Routes>
+            </ToastProvider>
         </div>
         </AuthContext.Provider>
     );
