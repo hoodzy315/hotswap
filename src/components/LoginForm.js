@@ -1,9 +1,6 @@
 import React from 'react';
 import { AuthContext } from '../App';
 
-import { useContext, useEffect, useRef } from 'react';
-import ToastContext from '../context/ToastContext';
-
 /**
  * Author: Joe Woods
  * This handles the login form and authentication verification
