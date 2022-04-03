@@ -10,9 +10,9 @@ export const LoginForm = () => {
     //Bring in dispatch from AuthContext
     const { dispatch } = React.useContext(AuthContext);
 
-    //Setup of initial state and variable for email and password
+    //Setup of initial state and variable for username and password
     const initialState = {
-        email: "",
+        username: "",
         password: "",
         isSubmitting: false,
         errorMessage: null
@@ -43,7 +43,7 @@ export const LoginForm = () => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                username: data.email,
+                username: data.username,
                 password: data.password
             })
         })
@@ -73,15 +73,14 @@ export const LoginForm = () => {
         //Form for login
         <form onSubmit={handleFormSubmit}>
             <div className="form-group">
-                <label htmlFor="email">Email address</label>
+                <label htmlFor="username">Username</label>
                 <input
                     type="text"
                     className="form-control"
-                    value={data.email}
+                    value={data.username}
                     onChange={handleInputChange}
-                    id="email"
-                    name="email"
-                    placeholder="name@example.com"
+                    id="username"
+                    name="username"
                 />
             </div>
             <div className="form-group">
