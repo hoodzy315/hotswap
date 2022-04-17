@@ -38,11 +38,11 @@ class DisplayItems extends React.Component {
                 <h1>Store</h1>
                 <br/>
                 <div className="storeGrid">
-                    {
+                    {   
                         this.state.items.map(item => <Product 
                             key={item._id}
                             item={item.name}
-                            img={item.image}
+                            img={`https://damp-fjord-26738.herokuapp.com/api/userstore/images/${item.image}`}
                             />)
                     }
                 </div>
