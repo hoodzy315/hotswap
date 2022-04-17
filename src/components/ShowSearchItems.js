@@ -122,7 +122,7 @@ class ShowSearchItems extends React.Component {
                             this.state.items.map(item => <Product
                                 key={item._id}
                                 item={item.name}
-                                img={item.image}
+                                img={`https://damp-fjord-26738.herokuapp.com/api/userstore/images/${item.image}`}
                             />)
                         }
                     </div>
