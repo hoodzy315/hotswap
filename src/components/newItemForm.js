@@ -130,7 +130,7 @@ export default function NewItemForm() {
                 <br />
                 <label className="uploadfrmt" htmlFor="condition">Condition</label><br/>
                 <select onChange={(e) => setCondition(e.target.value)}>
-                    <option value="" disabled selected>Select Condition of Item</option>
+                    <option value="" disabled defaultValue>Select Condition of Item</option>
                     {TRADEITEM_CONDITIONS.map(cond => 
                       <option key={cond}>
                         {cond}
@@ -142,7 +142,7 @@ export default function NewItemForm() {
                 <br />
                 <label className="uploadfrmt" htmlFor="condition">Category</label><br/>
                 <select onChange={(e) => setCategory(e.target.value)}>
-                    <option value="" disabled selected>Select a Category</option>
+                    <option value="" disabled defaultValue>Select a Category</option>
                     {TRADEITEM_CATEGORIES.map(cat => 
                       <option key={cat}>
                         {cat}

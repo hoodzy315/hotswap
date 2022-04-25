@@ -123,6 +123,7 @@ class ShowSearchItems extends React.Component {
                             this.state.items.map(item => 
                             <Link to={'/make-trade-offer'}
                               state={item}
+                              key={item._id}
                             >
                               <Product
                                 key={item._id}
