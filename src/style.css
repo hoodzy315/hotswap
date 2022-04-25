@@ -323,3 +323,9 @@ img {
 input {
   margin-bottom: 10px;
 }
+
+section.main_header {
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
