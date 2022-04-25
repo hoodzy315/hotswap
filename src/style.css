@@ -25,17 +25,74 @@ body {
   margin: 2em auto;
 }
 
-.HotSwapLogo {
-  max-width: 100%;
-  max-height:100%;
+.About--landing {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  padding-top: 70px;
+  padding-left: 40px;
+  padding-right: 40px;
+  height: 500px;
 }
 
-.contentColumn
-{
+.About--vision {
+  background-color: #9254c8;
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 5px;
+  padding-right: 5px;
+}
+.About--mission {
+  background-color: #93d9a3;
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.About--history {
+  background-color: #93d9a3;
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 5px;
+  padding-right: 5px;
+}
+.About--values {
+  background-color: #9254c8;
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 5px;
+  padding-right: 5px;
+}
+.About--values--p {
+  line-height: 90px;
+}
+
+.Contact--landing {
+  display: grid;
+  font-size: 25px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding-top: 150px;
+  padding-left: 100px;
+  padding-right: 40px;
+}
+
+.contactLogos {
+  max-width: 30%;
+  max-height: 100%;
+}
+
+.HotSwapLogo {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.contentColumn {
   margin-top: 2em;
   margin-left: auto;
   margin-right: auto;
-  position: relative; 
+  position: relative;
   justify-self: center;
   width: 100%;
   height: 100%;
@@ -55,13 +112,13 @@ body {
 }
 
 .loginform {
-    margin-left: 2em;
+  margin-left: 2em;
 }
 
 nav {
   display: flex;
   align-items: center;
-  background-color: #6b30b8;
+  background: linear-gradient(to right, #679186, #9254c8);
   height: 90px;
   padding: 30px 25px;
 }
@@ -71,8 +128,14 @@ nav {
   margin-bottom: auto;
   margin-top: auto;
   font-weight: 900;
+  color: #357c3c;
 }
-
+.about-link {
+  color: white;
+}
+.contact-link {
+  color: white;
+}
 
 .HotSwapContainer {
   margin-top: 3em;
@@ -80,8 +143,8 @@ nav {
   height: 180px;
 }
 
-#signUp{
-  margin-top:20px;
+#signUp {
+  margin-top: 20px;
   background-color: rgb(25, 160, 25);
 }
 .nav--contact {
@@ -187,7 +250,7 @@ nav {
   margin-top: 2em;
 }
 
-.form-control-sm{
+.form-control-sm {
   width: 8.75em;
 }
 
@@ -195,28 +258,28 @@ nav {
   display: flex;
 }
 
-.flex-child1, .flex-child2 {
+.flex-child1,
+.flex-child2 {
   margin-right: 1em;
 }
 .btnFormat {
   background-color: #6b30b8;
-  margin-bottom: .2em;
+  margin-bottom: 0.2em;
 }
 
 .btnFormat2 {
   background-color: rgb(25, 160, 25);
-  margin: .5em;
+  margin: 0.5em;
   width: 75%;
 }
 
 .btnFormat3 {
   background-color: rgb(25, 160, 25);
-  margin: .5em;
+  margin: 0.5em;
   width: 10%;
-  top:0;
-  right:0;
+  top: 0;
+  right: 0;
   position: absolute;
-  
 }
 
 .formFormat {
@@ -232,8 +295,8 @@ a {
   cursor: pointer;
 }
 
-.loginModal .modal-content{
-  background-color:#6b30b8;
+.loginModal .modal-content {
+  background-color: #6b30b8;
   color: white;
 }
 
@@ -245,22 +308,21 @@ a {
   border-bottom: 0px;
 }
 
-.wrapper{
-    margin-top: 2em;
-		margin-bottom: 10%;
-		margin-left: 2em;
-		margin-right: auto;
-		width: 95%;
-    height: 100%;
-		border: 2px solid #000033;
-		box-shadow: 9px 9px 9px rgb(24, 86, 167);;
-		display: grid;
-		grid-template-rows: auto;
-		grid-template-columns: 12.25em 1fr;
-    grid-template-areas:
-    "a b";
-    border-radius: 25px;
-    padding: 10px;
+.wrapper {
+  margin-top: 2em;
+  margin-bottom: 10%;
+  margin-left: 2em;
+  margin-right: auto;
+  width: 95%;
+  height: 100%;
+  border: 2px solid #000033;
+  box-shadow: 9px 9px 9px rgb(24, 86, 167);
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 12.25em 1fr;
+  grid-template-areas: "a b";
+  border-radius: 25px;
+  padding: 10px;
 }
 
 .prodImg {
@@ -291,9 +353,8 @@ img {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.nav--dashboard{
-  margin-top: .8em;
-
+.nav--dashboard {
+  margin-top: 0.8em;
 }
 
 .buttonColumn {
@@ -302,7 +363,7 @@ img {
   align-items: center;
   flex-direction: column;
   border-radius: 22px;
-  background-color:#6b30b8;
+  background-color: #6b30b8;
 }
 
 .errorParagraph {
@@ -323,6 +384,7 @@ img {
 input {
   margin-bottom: 10px;
 }
+
 
 section.main_header {
   padding: 10px;
@@ -412,3 +474,4 @@ section.make_trade {
 .make_trade_left {
   padding: 20px;
 }
+
