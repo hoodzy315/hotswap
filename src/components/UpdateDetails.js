@@ -104,55 +104,58 @@ export default function NewItemForm() {
 
     return (
         <div className="upload">
-            <form className="" onSubmit={updateUser}>
-                <input
-                    type="text"
-                    onChange={(e) => setnewUsername(e.target.value)}
-                    placeholder={"Change Username"}
-                />
-                <input className="uploadfrmt" type="submit" />
+            <form className="d-flex justify-content-between mb-3" onSubmit={updateUser}>
+                <div className="w-100 form-group padding-right-custom">
+                    <label htmlFor="username">Username</label>
+                    <input type="text" className="form-control" id="username" placeholder="Update username" onChange={(e) => setnewUsername(e.target.value)} />
+                </div>
+                <div className="form-group width-custom">
+                    <label className="visibility-hidden">Button</label>
+                    <input className="form-control m-0 btn btn-danger btnFormat4" type="submit" />
+                </div>
             </form>
-            <br />
-            <form className="" onSubmit={updatePassword}>
-                <input
-                    type="text"
-                    onChange={(e) => setnewPass(e.target.value)}
-                    placeholder={"Change password"}
-                />
-                <input className="uploadfrmt" type="submit" />
+            <form className="d-flex justify-content-between mb-3" onSubmit={updatePassword}>
+                <div className="w-100 form-group padding-right-custom">
+                    <label htmlFor="password">Password</label>
+                    <input type="text" className="form-control" id="password" placeholder="Update password" onChange={(e) => setnewPass(e.target.value)} />
+                </div>
+                <div className="form-group width-custom">
+                    <label className="visibility-hidden">Button</label>
+                    <input className="form-control m-0 btn btn-danger btnFormat4" type="submit" />
+                </div>
             </form>
             <form className="" onSubmit={updateOthers}>
-                <input
-                    type="email"
-                    onChange={(e) => setNewEmail(e.target.value)}
-                    placeholder={"Change Email"}
-                />
-                <input
-                    type="text"
-                    onChange={(e) => setnewsal1(e.target.value)}
-                    placeholder={"Change shipping address line 1"}
-                />
-                <input
-                    type="text"
-                    onChange={(e) => setnewsal2(e.target.value)}
-                    placeholder={"Change shipping address line 2"}
-                />
-                <input
-                    type="text"
-                    onChange={(e) => setnewCity(e.target.value)}
-                    placeholder={"Change city"}
-                />
-                <input
-                    type="text"
-                    onChange={(e) => setnewState(e.target.value)}
-                    placeholder={"Change state"}
-                />
-                <input
-                    type="text"
-                    onChange={(e) => setnewZip(e.target.value)}
-                    placeholder={"Change zip"}
-                />
-                <input className="uploadfrmt" type="submit" />
+                <div className="form-group">
+                    <label htmlFor="inputEmail4">Email</label>
+                    <input type="email" className="form-control" id="inputEmail4" placeholder="Update email" onChange={(e) => setNewEmail(e.target.value)} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="inputAddress">Address</label>
+                    <input type="text" className="form-control" id="inputAddress" placeholder="Update shipping address line 1" onChange={(e) => setnewsal1(e.target.value)} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="inputAddress2">Address 2</label>
+                    <input type="text" className="form-control" id="inputAddress2"
+                           placeholder="Update shipping address line 2" onChange={(e) => setnewsal2(e.target.value)} />
+                </div>
+                <div className="form-row d-flex">
+                    <div className="form-group col-md-6 pr-2">
+                        <label htmlFor="inputCity">City</label>
+                        <input placeholder="Update city" type="text" className="form-control" id="inputCity" onChange={(e) => setnewCity(e.target.value)} />
+                    </div>
+                    <div className="form-group col-md-4 px-2">
+                        <label htmlFor="inputState">State</label>
+                        <input placeholder="Update state" type="text" className="form-control" id="inputState" onChange={(e) => setnewState(e.target.value)} />
+                    </div>
+                    <div className="form-group col-md-2 pl-2">
+                        <label htmlFor="inputZip">Zip</label>
+                        <input type="text" placeholder="Update zip" className="form-control" id="inputZip" onChange={(e) => setnewZip(e.target.value)} />
+                    </div>
+                </div>
+
+                <div className="form-row d-flex justify-content-center">
+                    <input className="btn btn-danger btnFormat4" type="submit" />
+                </div>
             </form>
         </div>
     );
