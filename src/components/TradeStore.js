@@ -6,7 +6,7 @@ import React from "react";
 
 /**
  * Author: Joe Woods
- * This component is the layout for adding an item
+ * This component is the layout for the trade store
  */
 
 export default function TradeStore() {
