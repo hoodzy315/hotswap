@@ -282,6 +282,11 @@ nav {
   position: absolute;
 }
 
+.btnFormat4 {
+  background-color: rgb(25, 160, 25);
+  margin: 0.5em;
+}
+
 .formFormat {
   background-color: #6b30b8;
   color: white;
@@ -383,4 +388,20 @@ img {
 
 input {
   margin-bottom: 10px;
+}
+
+.upload > form {
+  width: 75%;
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}
+
+.width-custom {
+  width: 69px;
+}
+
+.padding-right-custom {
+  padding-right: 8px
 }
