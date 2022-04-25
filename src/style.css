@@ -390,6 +390,95 @@ input {
   margin-bottom: 10px;
 }
 
+section.main_header {
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+section.make_trade {
+  border: 1px solid black;
+  min-height: 400px;
+  width: 70%;
+  margin: auto;
+  display: flex;
+  color: #000;
+  border-radius: 5%;
+  overflow: hidden;
+}
+
+.make_trade_left {
+  width: 50%;
+  border-right: 1px solid gray;
+}
+
+.trade_img_large {
+  height: 40%;
+  padding: 20px;
+  object-fit: cover;
+}
+
+.make_trade_right {
+  width: 50%;
+}
+
+.make_trade_right_header {
+  height: 20%;
+  max-height: 100px;
+  background: #6b30b8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
+
+.center {
+  text-align: center;
+}
+
+.my_trade_item {
+  border: 1px solid gray;
+  height: 15%;
+  max-height: 75px;
+  display: flex;
+  justify-content: space-between;
+  color: #000;
+}
+
+.my_trade_offer_photo {
+  width: 33%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.my_trade_item_btn {
+  border-left: 1px solid gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.make_offer_btn {
+  background: rgb(25, 160, 25);
+  color: #fff;
+  margin: 3px;
+  max-width: 75%;
+  font-size: 0.9rem;
+}
+
+.my_trade_item_text {
+  width: 33%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.make_trade_left {
+  padding: 20px;
+}
+
 .upload > form {
   width: 75%;
 }
@@ -405,3 +494,4 @@ input {
 .padding-right-custom {
   padding-right: 8px
 }
+

@@ -7,6 +7,7 @@ import LandingPage from "./components/LandingPage";
 import AddItem from "./components/AddItem";
 import Settings from "./components/Settings";
 import TradeStore from "./components/TradeStore";
+import MakeTradeOffer from "./components/MakeTradeOffer";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -83,6 +84,7 @@ const App = () => {
                   <Route path='/additem' element={!state.isAuthenticated ? <LandingPage/> : <AddItem/>}/>
                   <Route path='/settings' element={!state.isAuthenticated ? <LandingPage/> : <Settings/>}/>
                   <Route path='/tradestore' element={!state.isAuthenticated ? <LandingPage/> : <TradeStore/>}/>
+                  <Route path='/make-trade-offer' element={!state.isAuthenticated ? <LandingPage/> : <MakeTradeOffer/>}/>
               </Routes>
             </ToastProvider>
         </div>

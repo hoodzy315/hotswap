@@ -17,6 +17,7 @@ export default function LoggedIn() {
             "Authorization": "Bearer " + state.token
         }
     }
+
     return (
         <>
             {/*Navbar component*/}

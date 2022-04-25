@@ -42,7 +42,7 @@ export const LoginForm = () => {
         });
         //Fetching login data
         await fetch("https://damp-fjord-26738.herokuapp.com/api/users/login", {
-            method: "post",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },

@@ -2,6 +2,7 @@ import React from "react";
 import Product from "./Product";
 import axios from 'axios';
 import { AuthContext } from '../App';
+import { Link } from 'react-router-dom';
 
 /**
  * Author: Joe Woods
@@ -119,11 +120,17 @@ class ShowSearchItems extends React.Component {
                     <br />
                     <div className="storeGrid">
                         {
-                            this.state.items.map(item => <Product
+                            this.state.items.map(item => 
+                            <Link to={'/make-trade-offer'}
+                              state={item}
+                              key={item._id}
+                            >
+                              <Product
                                 key={item._id}
                                 item={item.name}
                                 img={`https://damp-fjord-26738.herokuapp.com/api/userstore/images/${item.image}`}
-                            />)
+                              />
+                            </Link>)
                         }
                     </div>
                 </>
