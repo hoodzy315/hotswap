@@ -11,6 +11,8 @@ const ViewOffers = () => {
   const [date, setDate] = useState('');
   const [offers, setOffers] = useState([]);
   const [isTraded, setIsTraded] = useState(false);
+  const [trade, setTrade] = useState(null);
+  const [tradedTo, setTradedTo] = useState(null);
 
   const { 
     isToastDisplayed,
@@ -36,7 +38,13 @@ const ViewOffers = () => {
       const localeDate = datePosted.toLocaleDateString();
       setDate(localeDate);
       setOffers(data.offers);
-      console.log(data);
+      if(data.tradedTo !== null) {
+        setTradedTo(data.tradedTo);
+        setTrade(data.trade);
+        const newOffers = offers.filter(item => item._id === tradedTo);
+        setOffers(newOffers);
+        setIsTraded(true);
+      }
     }
     
     return () => { isMounted = false };
@@ -74,9 +82,12 @@ const ViewOffers = () => {
           }
         }
       );
+      const newOffers = offers.filter(item => item._id === offeredItemId);
+      setOffers(newOffers);
       setToastSeverity('success');
       setToastSummary('Success!');
       setToastDetail('Trade made successfully!');
+      setIsTraded(true);
       setIsToastDisplayed(true);
     } catch(e) {
       
@@ -128,6 +139,9 @@ const ViewOffers = () => {
             </section>
             <section className="make_trade">
               <div className="make_trade_left">
+                  {isTraded && <div className="traded_banner">
+                    <h3>Traded</h3>  
+                  </div>}
                   <br/>
                   <h4 className="center">Item Details: </h4>
                   <img src={imgUrl + tradeItem.image} alt={tradeItem.name} className="trade_img_large"/>
@@ -142,7 +156,7 @@ const ViewOffers = () => {
                 <div className="make_trade_right_header">
                   <h5 className="center">Trade Offers</h5>
                 </div>
-                {offers.map(item => {
+                {!isTraded && offers.map(item => {
                     return <div className="my_trade_item" key={item.name}>
                       <img src={imgUrl + item.image} alt={item.name + ' photo'} className="my_trade_offer_photo"/>
                       <div className="my_trade_item_text">
@@ -155,6 +169,24 @@ const ViewOffers = () => {
                     </div>    
                 }
                 )}
+                {isTraded && offers.map(item => {
+                  return <div className="ship_to_container" key={item.name}>
+                    <img src={imgUrl + item.image} alt={item.name + ' photo'} className="traded_to_photo"/>
+                    <h5>Brand: </h5>
+                    <p>{item.brand}</p>
+                    <h5>Description: </h5>
+                    <p>{item.description}</p>
+                    <h5>Condition: </h5>
+                    <p>{item.condition}</p>
+                    <h5>Approximate Market Value: </h5>
+                    <p>${item.approximateMarketVal}</p>
+                    <div className="ship_to_btn_div">
+                      <button className="ship_item_btn">Cancel Trade</button>
+                      <button className="ship_item_btn">Ship Item</button>
+                    </div>
+                  </div>
+                })
+                }
               </div>
           </section>
         </div>
@@ -164,4 +196,3 @@ const ViewOffers = () => {
 }
 
 export default ViewOffers;
-
