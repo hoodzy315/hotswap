@@ -28,7 +28,6 @@ const ViewOffers = () => {
   }, [tradeItem]);
 
   const acceptOffer = async (offeredItemId) => {
-    //post the offeredItemId to tradeitems/accept-offer
     try {
       const response = await fetch(`${baseUrl}tradeitems/accept-offer`,
         {
@@ -45,8 +44,22 @@ const ViewOffers = () => {
     }
   }
 
-  const rejectOffer = () => {
-    
+  const rejectOffer = async (offeredItemId) => {
+    try {
+      const response = await fetch(`${baseUrl}tradeitems/reject-offer`,
+        {
+          method: 'POST',
+          body: JSON.stringify({offeredItemId: offeredItemId}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+    //TODO: Change UI to reflect successful or unsuccessful rejection
+    console.log(response.json());
+    } catch(e) {
+      console.log(e);
+    }
   }
 
   return (
@@ -93,7 +106,7 @@ const ViewOffers = () => {
                       </div>
                       <div className="accept_or_reject">
                         <button onClick={() => acceptOffer(item._id)} className="make_offer_btn">Accept Offer</button>
-                        <button onClick={rejectOffer} className="make_offer_btn">Reject Offer</button>
+                        <button onClick={() => rejectOffer(item._id)} className="make_offer_btn">Reject Offer</button>
                       </div>
                     </div>    
                 }
