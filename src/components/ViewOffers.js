@@ -38,17 +38,21 @@ const ViewOffers = () => {
       const localeDate = datePosted.toLocaleDateString();
       setDate(localeDate);
       setOffers(data.offers);
-      if(data.tradedTo !== null) {
-        setTradedTo(data.tradedTo);
-        setTrade(data.trade);
-        const newOffers = offers.filter(item => item.trade === trade);
-        setOffers(newOffers);
-        setIsTraded(true);
-      }
+      setTimeout(() => {
+        if(data.tradedTo !== null) {
+          setIsTraded(true);
+          setTradedTo(data.tradedTo);
+          setTrade(data.trade);
+          const newOffers = offers.filter(item => item.trade === trade);
+          setOffers(newOffers);
+          
+        }
+      }, 500)
+      
     }
     
     return () => { isMounted = false };
-  }, [tradeItem, tradedTo]);
+  }, [tradeItem, tradedTo, isTraded]);
 
   useEffect(() => {
 
@@ -154,7 +158,7 @@ const ViewOffers = () => {
               </div>
               <div className="make_trade_right">
                 <div className="make_trade_right_header">
-                  <h5 className="center">Trade Offers</h5>
+                  <h5 className="center">Trade{isTraded ? 'd item' : ' Offers'}</h5>
                 </div>
                 {!isTraded && offers.map(item => {
                     return <div className="my_trade_item" key={item.name}>

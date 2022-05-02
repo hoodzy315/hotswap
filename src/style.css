@@ -505,12 +505,17 @@ section.make_trade {
   text-align:center;
 }
 
-.traded_to_photo {
-  padding-bottom: 20px;
-}
-
 .ship_to_container {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.traded_to_photo {
+  padding-bottom: 20px;
+  max-width: 50%;
+  height: auto;
+  align-self: center;
 }
 
 .ship_to_btn_div {
