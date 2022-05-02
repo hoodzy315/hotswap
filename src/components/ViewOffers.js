@@ -1,14 +1,28 @@
 import NavBar from './Navbar';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState, useContext, useRef } from 'react';
-import {AuthContext} from '../App';
-import axios from 'axios';
+
+import ToastContext from '../context/ToastContext';
+import { Toast } from 'primereact/toast';
 
 const ViewOffers = () => {
   const location = useLocation();
   const [tradeItem, setTradeItem] = useState({});
   const [date, setDate] = useState('');
   const [offers, setOffers] = useState([]);
+  const [isTraded, setIsTraded] = useState(false);
+
+  const { 
+    isToastDisplayed,
+    toastSummary,
+    toastDetail,
+    toastSeverity,
+    setIsToastDisplayed,
+    setToastSummary,
+    setToastDetail,
+    setToastSeverity
+  } = useContext(ToastContext);
+  const toast = useRef(null);
   
   const baseUrl = 'https://damp-fjord-26738.herokuapp.com/api/';
   const imgUrl = `${baseUrl}userstore/images/`;
@@ -22,6 +36,7 @@ const ViewOffers = () => {
       const localeDate = datePosted.toLocaleDateString();
       setDate(localeDate);
       setOffers(data.offers);
+      console.log(data);
     }
     
     return () => { isMounted = false };
@@ -30,6 +45,23 @@ const ViewOffers = () => {
   useEffect(() => {
 
   }, [offers])
+
+  useEffect(() => {
+    if(toast.current) {
+      // From PrimeReact library, displays toast message for 5 seconds
+      toast.current.show(
+        {
+          severity: toastSeverity,
+          summary: toastSummary,
+          detail: toastDetail,
+          life: 5000
+        }
+      );
+    }
+    setTimeout(() => {
+      setIsToastDisplayed(false);
+    }, 5000);
+}, [isToastDisplayed])
 
   const acceptOffer = async (offeredItemId) => {
     try {
@@ -42,7 +74,10 @@ const ViewOffers = () => {
           }
         }
       );
-    //TODO: Change UI to reflect successful or unsuccessful trade
+      setToastSeverity('success');
+      setToastSummary('Success!');
+      setToastDetail('Trade made successfully!');
+      setIsToastDisplayed(true);
     } catch(e) {
       
     }
@@ -59,9 +94,12 @@ const ViewOffers = () => {
           }
         }
       );
-    //TODO: Change UI to reflect successful or unsuccessful rejection
     const newOffers = offers.filter(item => item._id !== offeredItemId);
     setOffers(newOffers);
+    setToastSeverity('success');
+    setToastSummary('Success!');
+    setToastDetail('Trade offer rejected successfully!');
+    setIsToastDisplayed(true);
     } catch(e) {
       console.log(e);
     }
@@ -69,6 +107,7 @@ const ViewOffers = () => {
 
   return (
     <>
+      {isToastDisplayed && <Toast ref={toast}/>}
       <NavBar/>
       <div className="wrapper">
         <div className="buttonColumn">
