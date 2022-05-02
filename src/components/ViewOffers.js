@@ -27,6 +27,10 @@ const ViewOffers = () => {
     return () => { isMounted = false };
   }, [tradeItem]);
 
+  useEffect(() => {
+
+  }, [offers])
+
   const acceptOffer = async (offeredItemId) => {
     try {
       const response = await fetch(`${baseUrl}tradeitems/accept-offer`,
@@ -56,7 +60,8 @@ const ViewOffers = () => {
         }
       );
     //TODO: Change UI to reflect successful or unsuccessful rejection
-    console.log(response.json());
+    const newOffers = offers.filter(item => item._id !== offeredItemId);
+    setOffers(newOffers);
     } catch(e) {
       console.log(e);
     }
