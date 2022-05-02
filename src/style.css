@@ -495,3 +495,7 @@ section.make_trade {
   padding-right: 8px
 }
 
+.accept_or_reject {
+  display: flex;
+}
+

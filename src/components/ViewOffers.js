@@ -9,8 +9,9 @@ const ViewOffers = () => {
   const [tradeItem, setTradeItem] = useState({});
   const [date, setDate] = useState('');
   const [offers, setOffers] = useState([]);
-
-  const imgUrl = 'https://damp-fjord-26738.herokuapp.com/api/userstore/images/';
+  
+  const baseUrl = 'https://damp-fjord-26738.herokuapp.com/api/';
+  const imgUrl = `${baseUrl}userstore/images/`;
 
   useEffect(() => { 
     let isMounted = true;
@@ -25,6 +26,28 @@ const ViewOffers = () => {
     
     return () => { isMounted = false };
   }, [tradeItem]);
+
+  const acceptOffer = async (offeredItemId) => {
+    //post the offeredItemId to tradeitems/accept-offer
+    try {
+      const response = await fetch(`${baseUrl}tradeitems/accept-offer`,
+        {
+          method: 'POST',
+          body: JSON.stringify({offeredItemId: offeredItemId}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+    //TODO: Change UI to reflect successful or unsuccessful trade
+    } catch(e) {
+      
+    }
+  }
+
+  const rejectOffer = () => {
+    
+  }
 
   return (
     <>
@@ -69,8 +92,8 @@ const ViewOffers = () => {
                         <p>{item.name}</p>
                       </div>
                       <div className="accept_or_reject">
-                        <button className="make_offer_btn">Accept Offer</button>
-                        <button className="make_offer_btn">Reject Offer</button>
+                        <button onClick={() => acceptOffer(item._id)} className="make_offer_btn">Accept Offer</button>
+                        <button onClick={rejectOffer} className="make_offer_btn">Reject Offer</button>
                       </div>
                     </div>    
                 }

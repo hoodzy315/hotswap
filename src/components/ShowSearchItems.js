@@ -33,6 +33,7 @@ class ShowSearchItems extends React.Component {
 
         axios.get("https://damp-fjord-26738.herokuapp.com/api/tradestore?k=" + this.state.keyword, config)
             .then(res => {
+              console.log('search', res.data.searchResults);
                 this.setState({
                     isLoaded: true,
                     items: res.data.searchResults,
