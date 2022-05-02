@@ -41,14 +41,14 @@ const ViewOffers = () => {
       if(data.tradedTo !== null) {
         setTradedTo(data.tradedTo);
         setTrade(data.trade);
-        const newOffers = offers.filter(item => item._id === tradedTo);
+        const newOffers = offers.filter(item => item.trade === trade);
         setOffers(newOffers);
         setIsTraded(true);
       }
     }
     
     return () => { isMounted = false };
-  }, [tradeItem]);
+  }, [tradeItem, tradedTo]);
 
   useEffect(() => {
 
