@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import Product from "./Product";
+import { Link } from 'react-router-dom';
 
 /**
  * Author: Joe Woods
@@ -27,6 +28,7 @@ class DisplayItems extends React.Component {
 
             
     }
+
     render() {
         var { isLoaded } = this.state;
 
@@ -39,11 +41,18 @@ class DisplayItems extends React.Component {
                 <br/>
                 <div className="storeGrid">
                     {   
-                        this.state.items.map(item => <Product 
+                        this.state.items.map(item => 
+                        <Link to={'/view-offers'}
+                          state={item}
+                          key={item._id}
+                        >
+                        <Product 
                             key={item._id}
                             item={item.name}
                             img={`https://damp-fjord-26738.herokuapp.com/api/userstore/images/${item.image}`}
-                            />)
+                            />
+                        </Link>
+                        )
                     }
                 </div>
                 </>

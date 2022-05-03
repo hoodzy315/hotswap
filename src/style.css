@@ -495,3 +495,37 @@ section.make_trade {
   padding-right: 8px
 }
 
+.accept_or_reject {
+  display: flex;
+}
+
+.traded_banner {
+  background-color: red;
+  color: white;
+  text-align:center;
+}
+
+.ship_to_container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.traded_to_photo {
+  padding-bottom: 20px;
+  max-width: 50%;
+  height: auto;
+  align-self: center;
+}
+
+.ship_to_btn_div {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.ship_item_btn {
+  background-color: rgb(25, 160, 25);
+  color: white;
+}
+
