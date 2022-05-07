@@ -36,6 +36,11 @@ export default function LoggedIn() {
                             <button className="btn btn-sm btn-danger center modal-button btnFormat3">Add item</button>
                         </Link>
                     </div>
+                    <div className="deleteItem">
+                        <Link className ="empty" to="/deleteitem">
+                            <button className="btn btn-sm btn-danger center modal-button btnFormat4">Delete item</button>
+                        </Link> 
+                    </div>
                     <DisplayItems config={config} userStore={state.userStore}/>
                 </div>
             </div>
